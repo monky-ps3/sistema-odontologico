@@ -12,15 +12,15 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                    <h6 class="m-0 font-weight-bold text-primary">Listado de Odontologos con Horario</h6>
-                    
+                    <h6 class="m-0 font-weight-bold text-primary">Listado de Odontologos</h6>
+                   
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-
+                                   
                                     <th>Nombre</th>
                                     <th>Cédula</th>
                                     <th>Especialidad</th>
@@ -32,23 +32,21 @@
                             <tbody>
                                 <?php foreach ($odontologos as $o): ?>
                                     <tr>
-
-                                        <td><?= esc($o->nombre) ?></td>
-                                        <td><?= esc($o->cedula) ?></td>
-                                        <td><?= esc($o->especialidad) ?></td>
-                                        <td><?= esc($o->telefono) ?></td>
-                                        <td><?= $o->activo ? 'Sí' : 'No' ?></td>
+                                    
+                                        <td><?= esc($o['nombre']) ?></td>
+                                        <td><?= esc($o['cedula']) ?></td>
+                                        <td><?= esc($o['especialidad']) ?></td>
+                                        <td><?= esc($o['telefono']) ?></td>
+                                        <td><?= $o['activo'] ? 'Sí' : 'No' ?></td>
                                         <td>
-
-                                            <a href="<?= base_url('horarios/odontologo/' . $o->id) ?>" class="btn btn-sm btn-primary">
+                                            <a href="<?= base_url('odontologos/show/' . $o['id']) ?>" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-edit">Ver</i>
+                                            </a>
+                                            <!-- <a href="<?= base_url('horarios/odontologo/' . $o['id']) ?>" class="btn btn-sm btn-primary">
                                                 <i class="fas fa-edit">Horario</i>
-                                            </a>
-                                            <a href="<?= base_url('horarios/nuevo/' . $o->id )?>" class="btn btn-primary btn-sm">
-                                                <i class="fas fa-plus"></i> Nuevo Horario
-                                            </a>
-                                            <a href="<?= base_url('citas/nueva/' . $o->id) ?>" class="btn btn-sm btn-success">Cita</a>
-
-                                     
+                                            </a> -->
+                                            <a href="<?= base_url('citas/nueva/' . $o['id']) ?>" class="btn btn-sm btn-success">Nueva Cita</a>
+                                      
 
 
                                         </td>

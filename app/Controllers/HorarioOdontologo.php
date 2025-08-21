@@ -19,18 +19,22 @@ class HorarioOdontologo extends BaseController
 
     public function index($odontologo_id)
     {
+
+       // var_dump($odontologo_id);
         $data = [
             'title' => 'Horario de Odontologos',
             'horarios' => $this->horarioModel
                 ->select('horarios.*,odontologos.nombre AS nombre_odontologo')
-                ->asObject()
+               
                 ->join('odontologos', 'odontologos.id=horarios.odontologo_id')
                 ->where('odontologo_id', $odontologo_id)
                 ->orderBy('dia_semana')
+                 ->asObject()
                 ->paginate(10),
             'pager' => $this->horarioModel->pager,
             'odontologo_id' => $odontologo_id,
         ];
+        //dd($data);
         return view('horarios/index', $data);
     }
       public function odontologos()
@@ -39,7 +43,8 @@ class HorarioOdontologo extends BaseController
         $data = [
             'title' => 'Gestión de Horarios',
             'odontologos' => $this->odontologoModel
-                ->select('odontologos.*')            
+                ->select('odontologos.*')
+                ->asObject()            
                 ->orderBy('id', 'DESC')
                 ->where('activo', "1")
                 ->paginate(10),

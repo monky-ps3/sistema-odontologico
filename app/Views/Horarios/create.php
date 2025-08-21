@@ -71,8 +71,8 @@
 
 
 
-    <a href="<?= base_url('horarios/odontologo/' . $odontologos->id) ?>" class="btn btn-sm btn-primary">
-        <i class="fas fa-edit">Volver</i>
+    <a href="<?= base_url('horarios/odontologo/' . $odontologos->id) ?>" class="btn btn-primary">
+       Volver
     </a>
 
     <button class="btn btn-primary" type="submit">Guardar Horario</button>

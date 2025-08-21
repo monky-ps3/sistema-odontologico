@@ -42,6 +42,27 @@ class Citas extends BaseController
         return view('citas/index', $data);
     }
 
+
+public function nueva(){
+   $data = [
+            'title' => 'Gestión de Citas',
+            'odontologos' => $this->odontologosModel
+                ->select('odontologos.*,users.username')
+                ->join('users', 'users.id =odontologos.user_id')
+                ->orderBy('id', 'DESC')
+                ->where('activo', "1")
+                ->paginate(10),
+            'pager' => $this->odontologosModel->pager,
+        ];
+
+        return view('citas/odontologos', $data);
+
+
+}
+
+
+
+
     public function show($id){
 
      $cita = $this->citaModel            
@@ -191,8 +212,8 @@ class Citas extends BaseController
         }
 
         // Convertimos a timestamps para poder generar intervalos
-        $horaInicio = strtotime($horario['hora_inicio']); // ej: "08:00:00"
-        $horaFin    = strtotime($horario['hora_fin']);    // ej: "14:00:00"
+        $horaInicio = strtotime($horario->hora_inicio); // ej: "08:00:00"
+        $horaFin    = strtotime($horario->hora_fin);    // ej: "14:00:00"
 
         // Generar bloques de 1 hora (3600 segundos)
         $intervalos = [];

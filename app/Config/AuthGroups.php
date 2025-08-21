@@ -41,24 +41,18 @@ class AuthGroups extends ShieldAuthGroups
      * @see https://codeigniter4.github.io/shield/quick_start_guide/using_authorization/#change-available-groups for more info
      */
     public array $groups = [
-        'superadmin' => [
-            'title'       => 'Super Admin',
-            'description' => 'Complete control of the site.',
-        ],
-        'admin' => [
-            'title'       => 'Admin',
-            'description' => 'Administrador del sistema.',
-        ],
-       
-        'asistente' => [
-            'title'       => 'Asistente',
-            'description' => 'Asistente dental.',
-        ],
-             'odontologo' => [
-            'title'       => 'Odontologo',
-            'description' => 'Odontólogo del sistema .',
-        ],
-       
+       'admin' => [
+        'title' => 'Admin',
+        'description' => 'Acceso total'
+    ],
+    'recepcionista' => [
+        'title' => 'Recepcionista',
+        'description' => 'Acceso parcial'
+    ],
+    'odontologo' => [
+        'title' => 'Odontólogo',
+        'description' => 'Acceso clínico'
+    ],
     ];
 
     /**
@@ -100,7 +94,7 @@ class AuthGroups extends ShieldAuthGroups
             'users.delete',
             'beta.access',
         ],
-        'developer' => [
+        'odontologo' => [
             'admin.access',
             'admin.settings',
             'users.create',

@@ -16,44 +16,65 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-
-                    <li class="nav-item">
-                        <a href="<?= base_url('pacientes') ?>" class="nav-link">Pacientes</a>
-                    </li>
-
-                    <!-- Dropdown para Odontólogos -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="odontologosDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Odontólogos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="odontologosDropdown">
-                            <li><a class="dropdown-item" href="<?= base_url('odontologos') ?>">Lista de Odontólogos</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('horarios') ?>">Horarios</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="<?= base_url('citas') ?>" class="nav-link">Citas</a>
-                    </li>
-
+                <ul class="navbar-nav me-auto"> <!-- me-auto para empujar elementos a la derecha -->
                     <?php if (auth()->loggedIn()): ?>
-                        <li class="nav-item">
-                            <span class="nav-link">Bienvenido, <?= esc(auth()->user()->username) ?></span>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('logout') ?>">Cerrar sesión</a>
-                        </li>
+                        <?php if (auth()->user()->inGroup('admin') || auth()->user()->inGroup('recepcionista')): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('dashboard') ?>">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('pacientes') ?>" class="nav-link">Pacientes</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="odontologosDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Odontólogos
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="odontologosDropdown">
+                                    <li><a class="dropdown-item" href="<?= base_url('odontologos') ?>">Lista de Odontólogos</a></li>
+                                    <li><a class="dropdown-item" href="<?= base_url('horarios') ?>">Horarios</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="citasDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Citas
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="citasDropdown">
+                                    <li><a class="dropdown-item" href="<?= base_url('citas') ?>">Listado de Citas</a></li>
+                                    <li><a class="dropdown-item" href="<?= base_url('citas/odontologos') ?>">Registrar Nueva Cita</a></li>
+                                </ul>
+                            </li>
+                        <?php endif; ?>
+
+                        <?php if (auth()->user()->inGroup('odontologo')): ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url('odontologo/citas-hoy') ?>" class="nav-link">Citas del Día</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="<?= base_url('odontologo/horario/') ?>" class="nav-link">Horario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('odontologo/historial') ?>" class="nav-link">Historial Clínico</a>
+                            </li>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </ul>
+
+                <?php if (auth()->loggedIn()): ?>
+                    <div class="d-flex align-items-center"> <!-- Contenedor flexible para elementos derechos -->
+                        <span class="navbar-text me-3">Bienvenido <?= esc(auth()->user()->username) ?></span>
+                        <a class="btn btn-outline-light btn-sm" href="<?= site_url('logout') ?>">Cerrar sesión</a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
-
-
 
     <div class="container">
         <div class="card">

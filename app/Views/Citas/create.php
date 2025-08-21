@@ -54,7 +54,7 @@
             return;
         }
 
-        fetch(`<?= base_url('citas/horarios_disponibles') ?>?fecha=${fecha}&odontologo_id=${odontologo_id}`)
+        fetch(`<?= base_url('citas/horariosdisponibles') ?>?fecha=${fecha}&odontologo_id=${odontologo_id}`)
             .then(response => response.json())
             .then(data => {
                 horaSelect.innerHTML = '';

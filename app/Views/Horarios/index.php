@@ -13,9 +13,10 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        Dr. <?= esc($horarios[0]->nombre_odontologo ?? 'Sin nombre') ?>
+                        Dr. <?= esc($horarios->nombre_odontologo ?? 'Sin nombre') ?>
                     </h6>
-                    <a href="<?= base_url('horarios/nuevo/' . $horarios[0]->odontologo_id) ?>" class="btn btn-primary btn-sm">
+           
+                    <a href="<?= base_url('horarios/nuevo/' . $odontologo_id ) ?>" class="btn btn-primary btn-sm">
                         <i class="fas fa-plus"></i> Nuevo Horario
                     </a>
                 </div>

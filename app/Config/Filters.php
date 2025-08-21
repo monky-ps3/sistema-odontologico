@@ -37,7 +37,9 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         // Filtros personalizados y de Shield
         'isLoggedIn'    => LoggedIn::class,
-       
+        'group' => \CodeIgniter\Shield\Filters\GroupFilter::class,
+
+
     ];
 
     /**

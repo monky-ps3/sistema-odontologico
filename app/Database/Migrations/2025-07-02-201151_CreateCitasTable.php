@@ -31,6 +31,16 @@ class CreateCitasTable extends Migration
                 'constraint' => ['pendiente', 'confirmada', 'cancelada', 'realizada'],
                 'default'    => 'pendiente',
             ],
+            'diagnostico' => [
+                'type' => 'TEXT',
+                'null' => true,
+                'after' => 'motivo'
+            ],
+            'observaciones' => [
+                'type' => 'TEXT',
+                'null' => true,
+                'after' => 'diagnostico',
+            ],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);

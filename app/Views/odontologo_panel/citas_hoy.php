@@ -39,7 +39,7 @@
                             </td>
                             <td>
                                 <?php if ($cita->estado === 'pendiente'): ?>
-                                    <a href="<?= base_url('historial/create/' . $cita->id) ?>" class="btn btn-sm btn-success">
+                                    <a href="<?= base_url('odontologo/atender-cita/' . $cita->id) ?>" class="btn btn-sm btn-success">
                                         <i class="fas fa-stethoscope me-1"></i> Atender
                                     </a>
                                 <?php else: ?>

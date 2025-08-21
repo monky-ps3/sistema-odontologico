@@ -41,7 +41,7 @@
                                     <td><?= $paciente['telefono'] ?></td>
                                     <td>
                                         <span class="badge badge-<?= $paciente['estado'] === 'activo' ? 'success' : 'danger' ?>">
-                                            <?= ucfirst($paciente['estado']) ?>
+                                           <span class="badge bg-secondary"> <?= ucfirst($paciente['estado']) ?></span>
                                         </span>
                                     </td>
                                     <td>
@@ -54,9 +54,9 @@
                                         <a href="<?= base_url('pacientes/delete/' . $paciente['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">
                                             <i class="fas fa-trash">Eliminar</i>
                                         </a>
-                                        <a href="<?= base_url('odontograma/' . $paciente['id']) ?>" class="btn btn-sm btn-info">
+                                        <!-- <a href="<?= base_url('odontograma/' . $paciente['id']) ?>" class="btn btn-sm btn-info">
                                             <i class="fas fa-tooth"></i> Odontograma
-                                        </a>
+                                        </a> -->
                                     </td>
                                 </tr>
                                 <?php endforeach ?>
